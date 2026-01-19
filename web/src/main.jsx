@@ -1,7 +1,7 @@
 // Author: TrungQuanDev: https://youtube.com/@trungquandev
+import CssBaseline from '@mui/material/CssBaseline';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
-import CssBaseline from '@mui/material/CssBaseline';
 
 // Config react-toastify
 import { ToastContainer } from 'react-toastify';

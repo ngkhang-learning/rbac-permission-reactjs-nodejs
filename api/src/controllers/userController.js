@@ -12,14 +12,20 @@ import {
 
 /**
  * Mock nhanh thông tin user thay vì phải tạo Database rồi query.
- * Nếu muốn học kỹ và chuẩn chỉnh đầy đủ hơn thì xem Playlist này nhé:
- * https://www.youtube.com/playlist?list=PLP6tw4Zpj-RIMgUPYxhLBVCpaBs94D73V
  */
+
+const MOCK_ROLES = {
+  CLIENT: 'client',
+  MODERATOR: 'moderator',
+  ADMIN: 'admin',
+};
+
 const MOCK_DATABASE = {
   USER: {
     ID: 'khangn-id-12345678',
     EMAIL: 'khangn@gmail.com',
     PASSWORD: 'khangn@123',
+    ROLE: MOCK_ROLES.CLIENT,
   },
 };
 
@@ -39,6 +45,7 @@ const login = async (req, res) => {
     const userInfo = {
       id: MOCK_DATABASE.USER.ID,
       email: MOCK_DATABASE.USER.EMAIL,
+      role: MOCK_DATABASE.USER.ROLE,
     };
 
     // 3. Generate access and refresh tokens
@@ -129,6 +136,7 @@ const refreshToken = async (req, res) => {
     const userInfo = {
       id: refreshTokenDecoded.id,
       email: refreshTokenDecoded.email,
+      role: refreshTokenDecoded.role,
     };
 
     // Step 4: Generate new access token

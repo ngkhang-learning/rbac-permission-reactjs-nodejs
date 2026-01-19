@@ -2,6 +2,8 @@
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import Login from '~/pages/Login';
 import Dashboard from '~/pages/Dashboard';
+import { NotFound } from '~/pages/NotFound';
+import { AccessDenied } from '~/pages/AccessDenied';
 
 const ProtectedRoutes = () => {
   const userInfo = localStorage.getItem('userInfo');
@@ -24,7 +26,14 @@ function App() {
 
       <Route element={<ProtectedRoutes />}>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/support" element={<Dashboard />} />
+        <Route path="/messages" element={<Dashboard />} />
+        <Route path="/revenue" element={<Dashboard />} />
+        <Route path="/admin-tools" element={<Dashboard />} />
       </Route>
+
+      <Route path="/access-denied" element={<AccessDenied />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
